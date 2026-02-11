@@ -1,15 +1,11 @@
 class CampaignController {
   static async getAllCampaigns(req, res) {
-    try {
-      const { status, type, page = 1, limit = 20 } = req.query;
-      res.json({ 
-        success: true, 
-        data: [],
-        pagination: { total: 0, page: 1, limit: 20 }
-      });
-    } catch (error) {
-      res.status(500).json({ success: false, error: error.message });
-    }
+    const mockCampaigns = [
+      { id: "1", name: "Appointment Reminder", type: "email", status: "sent", recipientCount: 45, completionRate: 78 },
+      { id: "2", name: "Re-engagement Campaign", type: "sms", status: "sent", recipientCount: 32, completionRate: 62 },
+      { id: "3", name: "NPS Survey", type: "survey", status: "active", recipientCount: 28, completionRate: 45 }
+    ];
+    res.json({ success: true, data: mockCampaigns });
   }
 
   static async getCampaignById(req, res) {

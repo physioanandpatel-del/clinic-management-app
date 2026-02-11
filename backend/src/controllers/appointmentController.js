@@ -1,6 +1,11 @@
 class AppointmentController {
   static async getAllAppointments(req, res) {
-    res.json({ success: true, data: [] });
+    const mockAppointments = [
+      { id: "1", patientId: "1", practitionerId: "p1", dateTime: "2026-02-12T10:00:00", status: "scheduled", duration: 30 },
+      { id: "2", patientId: "2", practitionerId: "p1", dateTime: "2026-02-12T10:30:00", status: "scheduled", duration: 30 },
+      { id: "3", patientId: "3", practitionerId: "p2", dateTime: "2026-02-12T14:00:00", status: "completed", duration: 45 }
+    ];
+    res.json({ success: true, data: mockAppointments });
   }
 
   static async createAppointment(req, res) {

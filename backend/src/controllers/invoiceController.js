@@ -1,15 +1,11 @@
 class InvoiceController {
   static async getAllInvoices(req, res) {
-    try {
-      const { status, patientId, page = 1, limit = 20 } = req.query;
-      res.json({ 
-        success: true, 
-        data: [],
-        pagination: { total: 0, page: 1, limit: 20 }
-      });
-    } catch (error) {
-      res.status(500).json({ success: false, error: error.message });
-    }
+    const mockInvoices = [
+      { id: "1", patientId: "1", amount: 150.00, status: "paid", dueDate: "2026-02-10" },
+      { id: "2", patientId: "2", amount: 200.00, status: "pending", dueDate: "2026-02-15" },
+      { id: "3", patientId: "3", amount: 300.00, status: "paid", dueDate: "2026-02-08" }
+    ];
+    res.json({ success: true, data: mockInvoices });
   }
 
   static async getInvoiceById(req, res) {
